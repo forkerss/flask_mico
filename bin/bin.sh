@@ -1,0 +1,1 @@
+gunicorn -c gunicorn.conf app.wsgi:app

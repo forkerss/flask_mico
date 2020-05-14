@@ -1,0 +1,24 @@
+[[source]]
+url = "https://mirrors.aliyun.com/pypi/simple/"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+gunicorn = "*"
+click = "*"
+flask-sqlalchemy = "*"
+flask = "*"
+cerberus = "*"
+gevent = "==1.3.6"
+
+[dev-packages]
+pylint = "*"
+autopep8 = "*"
+watchdog = "*"
+python-dotenv = "*"
+
+[requires]
+python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
