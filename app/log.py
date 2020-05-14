@@ -8,7 +8,6 @@ from logging.handlers import RotatingFileHandler
 from typing import TextIO
 
 from app.settings import LOGDIR, SERVICE_ID
-from flask import current_app
 
 __all__ = ["logger", "setup_logger"]
 

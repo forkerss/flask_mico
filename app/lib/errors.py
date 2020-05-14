@@ -58,8 +58,8 @@ def _handle_bad_request(e):
     resp.content_type = MEDIA_JSON
     body = json.dumps(body)
     resp.data = body
-    logger.debug("HTTPException: status: %s body: %s, desc: %s",
-                 e.code, body, body["message"])
+    logger.debug("HTTPException: status: %s body: %s",
+                 e.code, body)
     return resp
 
 
