@@ -26,7 +26,7 @@ def validator(schema: Dict,
         in_params: when is_params is true, validate `request.args` data
 
     Usage:
-        @validator(schema=ALLSCHEMA["User"], is_params=True, null=True)
+        @validator(schema=ALLSCHEMA["User"], is_params=True)
         def get(self): 
             ...
     """
