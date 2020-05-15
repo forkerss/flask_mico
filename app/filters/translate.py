@@ -1,5 +1,3 @@
-import json
-
 from flask import g, request
 
 from app.lib import errors
@@ -23,7 +21,7 @@ class Translate:
             return
         request.on_json_loading_failed = on_json_loading_failed
         raw_json = request.get_json()
-        if not raw_json:
+        if not isinstance(raw_json, dict):
             raise errors.InvalidParameterError(
                 "A valid JSON document is required")
         g.data = raw_json
