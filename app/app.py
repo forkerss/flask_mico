@@ -4,7 +4,7 @@ import os
 
 from flask import Flask
 
-from app.api.v1.index import TestApi
+from app.api.v1.test import TestApi
 from app.extensions import db
 from app.filters import Translate
 from app.lib.errors import register_errors
@@ -19,7 +19,7 @@ def register_extensions(app):
 
 def register_api(app, version="/v1"):
     def add_url_rule(path, api_cls):
-        app.add_url_rule(version+path, view_func=api_cls.as_view('index'))
+        app.add_url_rule(version+path, view_func=api_cls.as_view(api_cls.__name__))
 
     add_url_rule('/index', TestApi)
 

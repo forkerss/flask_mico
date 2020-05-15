@@ -30,14 +30,14 @@ class Api(MethodView):
         body["data"] = data
         return jsonify(body), status, {"Content-Type": constant.MEDIA_JSON}
 
-    def get(self):
+    def get(self, *args, **kwargs):
         raise errors.NotSupportedError(method="GET", url=request.path)
 
-    def post(self):
+    def post(self, *args, **kwargs):
         raise errors.NotSupportedError(method="POST", url=request.path)
 
-    def put(self):
+    def put(self, *args, **kwargs):
         raise errors.NotSupportedError(method="PUT", url=request.path)
 
-    def delete(self):
+    def delete(self, *args, **kwargs):
         raise errors.NotSupportedError(method="DELETE", url=request.path)
