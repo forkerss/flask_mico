@@ -66,8 +66,9 @@ def _handle_bad_request(e):
 # AppError and its subclasses
 class AppError(Exception):
     def __init__(self, error: Dict = ERR_UNKNOWN,
-                 description: str = None):
+                 description: str = None, **kwargs):
         self._error = error
+        self._kv = kwargs
         self._error["description"] = description
 
     @property
@@ -91,7 +92,7 @@ class AppError(Exception):
         body["code"] = self.code
         body["message"] = self.message
         body["success"] = False
-        body["data"] = None
+        body["data"] = self._kv.get("data", None)
         body_ = json.dumps(body)
         resp = make_response(body_, self.status)
         resp.content_type = MEDIA_JSON

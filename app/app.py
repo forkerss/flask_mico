@@ -19,7 +19,8 @@ def register_extensions(app):
 
 def register_api(app, version="/v1"):
     def add_url_rule(path, api_cls):
-        app.add_url_rule(version+path, view_func=api_cls.as_view(api_cls.__name__))
+        app.add_url_rule(
+            version+path, view_func=api_cls.as_view(api_cls.__name__))
 
     add_url_rule('/index', TestApi)
 
@@ -29,7 +30,6 @@ def create_app(config_name=None):
         config_name = os.getenv('FLASK_CONFIG', 'development')
     app = Flask(__name__)
     app.config.from_object(config[config_name])
-
     # setup logger
     setup_logger(level=LOGLEVELS[config_name])
 
