@@ -1,10 +1,10 @@
 from flask import g
-from app.api.base import Api
-from app.lib.errors import InvalidParameterError
-from app.lib.field_validator import validator, FIELDSCHEMAS
+
+from lib import ApiView, validator
+from lib.error import InvalidParameterError
 
 
-class TestApi(Api):
+class TestApi(ApiView):
     @validator(schema=FIELDSCHEMAS['Test'])
     def get(self):
         print(g.data)

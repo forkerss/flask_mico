@@ -1,18 +1,15 @@
-import json
-from functools import partial
-from typing import Dict, Tuple
+from typing import Dict
 
-from flask import Flask, make_response
-from werkzeug.exceptions import HTTPException
+from flask import Flask, jsonify, make_response
 
-from app.lib.constant import MEDIA_JSON
-from app.lib.uitls import http_status_message
-from app.log import logger
+from lib.constant import MEDIA_JSON, http_status_message
+from lib.log import logger
 
 try:
     from collections import OrderedDict
 except:
     OrderedDict = dict
+
 
 # common errors
 ERR_INVALID_PARAMETER = {
@@ -37,33 +34,6 @@ ERR_UNKNOWN = {
 }
 
 
-def register_errors(app: Flask):
-    """Register errors
-    """
-    app.register_error_handler(AppError, lambda e: e.handle())
-    app.register_error_handler(HTTPStatus, lambda e: e.handle())
-    app.register_error_handler(HTTPException, _handle_bad_request)
-
-
-def _handle_bad_request(e):
-    """handle bad request
-    """
-    body = OrderedDict()
-    body["code"] = e.code
-    body["message"] = getattr(
-        e, 'description', http_status_message(e.code))
-    body["success"] = False
-    body["data"] = None
-    resp = e.get_response()
-    resp.content_type = MEDIA_JSON
-    body = json.dumps(body)
-    resp.data = body
-    logger.debug("HTTPException: status: %s body: %s",
-                 e.code, body)
-    return resp
-
-
-# AppError and its subclasses
 class AppError(Exception):
     def __init__(self, error: Dict = ERR_UNKNOWN,
                  description: str = None, **kwargs):
@@ -93,7 +63,7 @@ class AppError(Exception):
         body["message"] = self.message
         body["success"] = False
         body["data"] = self._kv.get("data", None)
-        body_ = json.dumps(body)
+        body_ = jsonify(body)
         resp = make_response(body_, self.status)
         resp.content_type = MEDIA_JSON
         logger.debug("AppError: status: %s body: %s, desc: %s",

@@ -4,18 +4,8 @@ from typing import Dict
 from cerberus import SchemaError, Validator
 from flask import g, request
 
-from app.lib.errors import AppError, InvalidParameterError
-from app.log import logger
-
-FIELDSCHEMAS = {
-    'Test': {
-        "test": {
-            "type": "string",
-            "regex": r"^[0-9a-zA-Z_]{4,30}$",
-            "required": True
-        },
-    }
-}
+from lib.error import AppError, InvalidParameterError
+from lib.log import logger
 
 
 def validator(schema: Dict,
