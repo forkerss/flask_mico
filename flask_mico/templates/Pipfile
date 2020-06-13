@@ -1,16 +1,17 @@
 [[source]]
-url = "https://mirrors.aliyun.com/pypi/simple/"
-verify_ssl = true
 name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
 
 [packages]
 flask = "*"
-cerberus = "*"
+cerberus = "*""
 
 [dev-packages]
 pylint = "*"
 autopep8 = "*"
-flask-mico = {editable = true,path = "."}
+watchdog = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"
