@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="flask_mico",
-    version="0.1.1",
+    version="0.1.2",
     description="flask mico",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -22,7 +22,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'startporject=flask_mico.cli:create_project'
+            'startproject=flask_mico.cli:create_project'
         ]
     }
 )

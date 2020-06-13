@@ -17,7 +17,7 @@
 
 ## Usage
 
-- start porject
+- start project
 
   `startproject [project name] [project dirname]`
 
