@@ -11,6 +11,7 @@ cerberus = "*"
 pylint = "*"
 autopep8 = "*"
 flask-mico = {editable = true,path = "."}
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"
