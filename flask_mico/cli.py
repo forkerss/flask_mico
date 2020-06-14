@@ -3,7 +3,7 @@ import re
 import sys
 
 BASE_DIR = os.path.abspath((os.path.dirname(__file__)))
-TEMLLATES_DIR = os.path.join(BASE_DIR, 'templates')
+TEMLLATE_DIR = os.path.join(BASE_DIR, 'project_template')
 TEM_ARG = "{{project_name}}"
 
 
@@ -23,10 +23,10 @@ def create_project():
         else:
             pro_path = sys.argv[2]
     # make project templates
-    for (root, dirs, files) in os.walk(TEMLLATES_DIR):
+    for (root, dirs, files) in os.walk(TEMLLATE_DIR):
         if "__pycache__" in dirs:
             dirs.remove("__pycache__")
-        mid_path = root.replace(TEMLLATES_DIR, '')
+        mid_path = root.replace(TEMLLATE_DIR, '')
         mid_path = mid_path.replace(TEM_ARG, name).lstrip('/')
         if mid_path:
             path_ = os.path.join(pro_path, mid_path)
