@@ -1,0 +1,11 @@
+# Include the '.flaskenv'
+include flask_mico/project_template/.flaskenv
+
+# Include the logs
+include flask_mico/project_template/logs/.gitkeep
+
+# Include the conf/deploy
+include flask_mico/project_template/conf/deploy/.gitkeep
+
+# Include the template files
+recursive-include flask_mico/project_template *
