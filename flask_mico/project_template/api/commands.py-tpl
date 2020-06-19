@@ -5,7 +5,7 @@ Example:
     
     @click.command()
     def hello():
-        """hello"""
+        '''hello'''
         print("hello")
 
 
