@@ -1,0 +1,20 @@
+"""commands
+Example:
+    
+    import click
+    
+    @click.command()
+    def hello():
+        """hello"""
+        print("hello")
+
+
+Usage:
+
+    # in settings
+    COMMANDS = [
+        ...
+        'api.commands.hello'
+        ...
+    ]
+"""
