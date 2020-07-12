@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="flask_mico",
-    version="0.2.1",
+    version="0.2.2",
     include_package_data=True,
     description="flask mico",
     long_description=long_description,
