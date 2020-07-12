@@ -9,7 +9,7 @@ from flask_mico.util import register_commands, register_extensions
 
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder=None, template_folder=None)
     app.config.from_object(settings)
 
     setup_logger(settings.DEBUG, settings.LOG_DIR, settings.SERVICE_NAME)
