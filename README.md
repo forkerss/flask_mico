@@ -13,8 +13,8 @@
 
 ## Installation
 
-`pip install flask_mico`
-`pip install git+https://github.com/YE-Kits/flask_mico.git@master#egg=flask_mico`
+- `pip install flask_mico`
+- `pip install git+https://github.com/YE-Kits/flask_mico.git@master#egg=flask_mico`
 
 ## Usage
 
