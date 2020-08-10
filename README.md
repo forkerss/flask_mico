@@ -1,6 +1,6 @@
 # flask_mico
 
-**developing** 正在使用`flask_mico`投入生产中，等待我的好消息...
+![](./docs/flask_mico.png)
 
 ## 添加有趣的功能
 
@@ -14,6 +14,7 @@
 ## Installation
 
 `pip install flask_mico`
+`pip install git+https://github.com/YE-Kits/flask_mico.git@master#egg=flask_mico`
 
 ## Usage
 
