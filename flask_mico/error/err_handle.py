@@ -1,5 +1,5 @@
 import json
-from flask import Flask
+from flask import Flask, jsonify, make_response
 from werkzeug.exceptions import HTTPException
 
 from flask_mico.constant import MEDIA_JSON, http_status_message
@@ -17,17 +17,23 @@ def _handle_bad_request(e):
     """handle bad request
     """
     body = OrderedDict()
-    body["code"] = e.code
+    if hasattr(e, "code"):
+        body["code"] = e.code
+    else:
+        body["code"] = 500
     body["message"] = getattr(
-        e, 'description', http_status_message(e.code))
+        e, 'description', http_status_message(body["code"]))
     body["success"] = False
     body["data"] = None
-    resp = e.get_response()
+
+    if hasattr(e, "get_response"):
+        resp = e.get_response()
+        resp.data = json.dumps(body)
+    else:
+        resp = make_response(jsonify(body), body["code"])
     resp.content_type = MEDIA_JSON
-    body = json.dumps(body)
-    resp.data = body
     logger.debug("HTTPException: status: %s body: %s",
-                 e.code, body)
+                 body["code"], body)
     return resp
 
 
